@@ -14,25 +14,17 @@ public class Task {
     public static void main(String[] args) {
         int[] array1 = randomArrayGenerator();
         int[] array2 = randomArrayGenerator();
-        System.out.printf("Первый массив:\n%s\nВторой массив:\n%s\n", printer(array1), printer(array2));
+        System.out.printf("Первый массив:\n%s\nВторой массив:\n%s", printer(array1), printer(array2));
 
         // Нахождение суммы двух массивов
 
         int[] resultSum = sumArrays(array1, array2);
-        System.out.println("Сумма массивов:");
-        for (int i : resultSum) {
-            System.out.printf("%d\t", i);
-        }
-        System.out.println();
+        System.out.printf("Сумма массивов:\n%s", printer(resultSum));
 
         // Нахождение частного двух массивов
 
         double[] resultDiv = divArrays(array1, array2);
-        System.out.println("Частное массивов:");
-        for (double i : resultDiv) {
-            System.out.printf("%s\t", i);
-        }
-        System.out.println();
+        System.out.printf("Частное массивов:\n%s", printer(resultDiv));
     }
 
     /**
@@ -40,7 +32,7 @@ public class Task {
      *
      * @param a Первый массив
      * @param b Второй массив
-     * @return Результирующий массив
+     * @return Результирующий массив, который является суммой массивов a и b
      */
     private static int[] sumArrays(int[] a, int[] b) {
         if (a == null || b == null) {
@@ -77,7 +69,7 @@ public class Task {
     /**
      * Метод распечатывает массив
      *
-     * @param a Массив для распечатки
+     * @param a Массив в формате int для распечатки
      * @return Массив в виде строки готовый для печати
      */
     private static String printer(int[] a) {
@@ -86,12 +78,37 @@ public class Task {
         }
         StringBuilder result = new StringBuilder();
         for (int i : a) {
-            result.append(i).append("\t");
+            result.append("[ ").append(i).append(" ]");
         }
         System.out.println();
         return result.toString();
     }
 
+    /**
+     * Метод распечатывает массив
+     *
+     * @param a Массив в формате double для распечатки
+     * @return Массив в виде строки готовый для печати
+     */
+    private static String printer(double[] a) {
+        if (a == null) {
+            return "null";
+        }
+        StringBuilder result = new StringBuilder();
+        for (double i : a) {
+            result.append("[ ").append(i).append(" ]");
+        }
+        System.out.println();
+        return result.toString();
+    }
+
+    /**
+     * Метод деления двух массивов
+     *
+     * @param a Первый массив
+     * @param b Второй массив
+     * @return Результирующий массив, который является частным массивов a и b
+     */
     private static double[] divArrays(int[] a, int[] b) {
         if (a == null || b == null) {
             throw new RuntimeException("Один или оба массива не инициализированы");
